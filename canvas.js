@@ -44,7 +44,7 @@ class Emote {
     this.height = emoteScale;
     this.width = emoteScale * ratio;
 
-    this.a = 1);
+    this.a = 1;
     this.b = 0;
     this.offset = Math.sqrt(Math.abs(this.b / this.a));
     this.x = -this.offset;
@@ -62,7 +62,7 @@ class Emote {
   }
 
   draw() {
-    const x = this.x + this.offset;
+    const x = this.x + -20;
     const y = height;
     ctx.drawImage(this.element, x, y, this.width, this.height);
   }
