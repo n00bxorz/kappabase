@@ -1,6 +1,6 @@
 const width = 1920;
 const height = 1080;
-const emoteScale = height * 0.1;
+const emoteScale = height * 0.001;
 
 const canvas = document.querySelector("#canvas");
 canvas.width = width;
