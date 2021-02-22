@@ -52,6 +52,22 @@ class Emote {
     this.shouldBeDeleted = false;
   }
 
+class Emote {
+  constructor(element) {
+    this.element = element;
+    const ratio = element.width / element.height;
+    this.height = emoteScale;
+    this.width = emoteScale * ratio;
+
+    this.a = -Math.random() * 0.005 - 0.0002;
+    this.b = Math.random() * height * 0.4 + height * 0.6;
+    this.offset = Math.sqrt(Math.abs(this.b / this.a));
+    this.x = -this.offset;
+    this.speed =
+      Math.random() * width * 0.002 + (2 * this.offset) / width + width * 0.01;
+    this.shouldBeDeleted = false;
+  }
+
   update() {
     this.x += this.speed;
 
@@ -61,10 +77,8 @@ class Emote {
   }
 
   draw() {
-
-    ctx.rotate(((2 * Math.PI) / 60) * time.getSeconds() + ((2 * Math.PI) / 60000) * time.getMilliseconds());
-    ctx.translate(105, 0);
-    ctx.fillRect(0, -12, 50, 24); // Shadow
-    ctx.drawImage(Emote, -12, -12);
+    const x = this.x + this.offset;
+    const y = height - (this.a * Math.pow(this.x, 2) + this.b);
+    ctx.drawImage(this.element, x, y, this.width, this.height);
   }
 }
