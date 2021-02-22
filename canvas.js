@@ -61,8 +61,7 @@ class Emote {
   }
 
   draw() {
-    const x = this.x + this.offset;
-    const y = height - (this.a * Math.pow(this.x, 2) + this.b);
+
     ctx.rotate(((2 * Math.PI) / 60) * time.getSeconds() + ((2 * Math.PI) / 60000) * time.getMilliseconds());
     ctx.translate(105, 0);
     ctx.fillRect(0, -12, 50, 24); // Shadow
