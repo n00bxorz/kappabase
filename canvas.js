@@ -49,7 +49,7 @@ class Emote {
     this.offset = 0;
     this.x = -this.offset;
     this.speed =
-      Math.random() * width * 0.002 + (2 * this.offset) / width + width * 0.01;
+      Math.random();
     this.shouldBeDeleted = false;
   }
 
