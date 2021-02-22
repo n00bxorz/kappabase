@@ -46,10 +46,10 @@ class Emote {
 
     this.a = -1;
     this.b = 10;
-    this.offset = Math.sqrt(Math.abs(this.b / this.a));
+    this.offset = Math.random(Math.abs(this.b / this.a));
     this.x = -this.offset;
     this.speed =
-      3;
+      30;
     this.shouldBeDeleted = false;
   }
 
@@ -62,8 +62,8 @@ class Emote {
   }
 
   draw() {
-    const x = this.x + -20;
-    const y = height;
+    const x = this.x + 200;
+    const y = height * .01;
     ctx.drawImage(this.element, x, y, this.width, this.height);
   }
 }
