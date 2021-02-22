@@ -62,8 +62,8 @@ class Emote {
   }
 
   draw() {
-    const x = this.x + this.offset;
-    const y = height - (this.a * Math.pow(this.x, 2) + this.b);
+    const x = this.x;
+    const y = height;
     ctx.drawImage(this.element, x, y, this.width, this.height);
   }
 }
