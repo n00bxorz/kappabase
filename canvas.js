@@ -46,7 +46,7 @@ class Emote {
 
     this.a = -Math.random() * 0.005 - 0.0002;
     this.b = Math.random() * height * 0.4 + height * 0.6;
-    this.offset = Math.sqrt(Math.abs(this.b / this.a));
+    this.offset = 0;
     this.x = -this.offset;
     this.speed =
       Math.random() * width * 0.002 + (2 * this.offset) / width + width * 0.01;
