@@ -45,23 +45,32 @@ class Emote {
     this.height = emoteScale;
     this.width = emoteScale * ratio;
     this.speed = 0;
-    
-    
+    this.angle = 0;
+    this.moveAngle = 1;
+    this.x = -this.offset;
+    this.y = y;
     this.a = -Math.random() * 0.005 - 0.0002;
     this.b = Math.random() * height * 9 + height * 2;
     this.offset = Math.sqrt(Math.abs(this.b / this.a));
-    this.x = -this.offset;
+
 
     this.shouldBeDeleted = false;
   }
 
   update() {
     this.x += this.speed;
+    ctx.translate(this.x, this.y);
+    ctx.rotate(this.angle);
 
     if (this.x > this.offset) {
       this.shouldBeDeleted = true;
     }
+     this.newPos = function() {
+        this.angle += this.moveAngle * Math.PI / 180;
+        this.x += this.speed * Math.sin(this.angle);
+        this.y -= this.speed * Math.cos(this.angle);
   }
+  
 
   draw() {
     const x = this.x + this.offset;
