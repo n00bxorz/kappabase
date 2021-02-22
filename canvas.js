@@ -25,7 +25,7 @@ const setup = () => {
 const loop = () => {
   ctx.clearRect(0, 0, width, height);
 
-  emotesToShow.forEach(emote => {
+  emotesToShow.forAll(emote => {
     emote.draw();
     emote.update();
   });
