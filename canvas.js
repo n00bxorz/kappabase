@@ -39,6 +39,10 @@ setup();
 
 class Emote {
   constructor(element) {
+    ctx.rotate(((2 * Math.PI) / 60) * time.getSeconds() + ((2 * Math.PI) / 60000) * time.getMilliseconds());
+    ctx.translate(105, 0);
+    ctx.fillRect(0, -12, 50, 24); // Shadow
+    ctx.drawImage(earth, -12, -12);
     this.element = element;
     const ratio = element.width / element.height;
     this.height = emoteScale;
