@@ -30,7 +30,7 @@ const loop = () => {
     emote.update();
   });
 
-  emotesToShow = emotesToShow.filter(emote => !emote.shouldBeDeleted);
+
 
   requestAnimationFrame(loop);
 };
