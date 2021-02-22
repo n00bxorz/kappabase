@@ -44,9 +44,9 @@ class Emote {
     this.height = emoteScale;
     this.width = emoteScale * ratio;
 
-    this.a = -Math.random() * 0.005 - 0.0002;
+    this.a = -Math.random() * 0.5 - 0.02;
     this.b = Math.random() * height * 0.4 + height * 0.6;
-    this.offset = Math.PI(Math.abs(this.b / this.a));
+    this.offset = Math.PI();
     this.x = -this.offset;
     this.speed =
       Math.random() * width * 0.002 + (2 * this.offset) / width + width * 0.01;
