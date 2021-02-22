@@ -39,10 +39,6 @@ setup();
 
 class Emote {
   constructor(element) {
-    ctx.rotate(((2 * Math.PI) / 60) * time.getSeconds() + ((2 * Math.PI) / 60000) * time.getMilliseconds());
-    ctx.translate(105, 0);
-    ctx.fillRect(0, -12, 50, 24); // Shadow
-    ctx.drawImage(Emote, -12, -12);
     this.element = element;
     const ratio = element.width / element.height;
     this.height = emoteScale;
@@ -67,6 +63,9 @@ class Emote {
   draw() {
     const x = this.x + this.offset;
     const y = height - (this.a * Math.pow(this.x, 2) + this.b);
-    ctx.drawImage(this.element, x, y, this.width, this.height);
+    ctx.rotate(((2 * Math.PI) / 60) * time.getSeconds() + ((2 * Math.PI) / 60000) * time.getMilliseconds());
+    ctx.translate(105, 0);
+    ctx.fillRect(0, -12, 50, 24); // Shadow
+    ctx.drawImage(Emote, -12, -12);
   }
 }
