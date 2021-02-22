@@ -23,7 +23,7 @@ const setup = () => {
 };
 
 const loop = () => {
-  ctx.clearRect(100, 1000, width, height);
+  ctx.clearRect(Math.random(), Math.random(), width, height);
 
   emotesToShow.forEach(emote => {
     emote.draw();
