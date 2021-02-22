@@ -1,6 +1,6 @@
-const width = 1920; /**Viewport width */
-const height = 1080; /**Veiwport Height */
-const emoteScale = height * 0.1; /*Scale of emote on screen */
+const width = 1920;
+const height = 1080;
+const emoteScale = height * 10.0;
 
 const canvas = document.querySelector("#canvas");
 canvas.width = width;
@@ -37,40 +37,29 @@ const loop = () => {
 
 setup();
 
-/*Emote element variables and animation*/ 
 class Emote {
   constructor(element) {
     this.element = element;
     const ratio = element.width / element.height;
     this.height = emoteScale;
     this.width = emoteScale * ratio;
-    this.speed = 0;
-    this.angle = 0;
-    this.moveAngle = 1;
-    this.x = -this.offset;
-    this.y = y;
+
     this.a = -Math.random() * 0.005 - 0.0002;
-    this.b = Math.random() * height * 9 + height * 2;
+    this.b = Math.random() * height * 0.4 + height * 0.6;
     this.offset = Math.sqrt(Math.abs(this.b / this.a));
-
-
+    this.x = -this.offset;
+    this.speed =
+      Math.random() * width * 0.002 + (2 * this.offset) / width + width * 0.01;
     this.shouldBeDeleted = false;
   }
 
   update() {
     this.x += this.speed;
-    ctx.translate(this.x, this.y);
-    ctx.rotate(this.angle);
 
     if (this.x > this.offset) {
       this.shouldBeDeleted = true;
     }
-     this.newPos = function() {
-        this.angle += this.moveAngle * Math.PI / 180;
-        this.x += this.speed * Math.sin(this.angle);
-        this.y -= this.speed * Math.cos(this.angle);
-  }}
-  
+  }
 
   draw() {
     const x = this.x + this.offset;
