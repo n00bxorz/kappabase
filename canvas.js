@@ -1,6 +1,6 @@
 const width = 1920;
 const height = 1080;
-const emoteScale = Math.random() * 5;
+const emoteScale = height * 0.1;
 
 const canvas = document.querySelector("#canvas");
 canvas.width = width;
@@ -23,14 +23,14 @@ const setup = () => {
 };
 
 const loop = () => {
-  ctx.clearRect(Math.random(), Math.random(), width, height);
+  ctx.clearRect(0, 0, width, height);
 
   emotesToShow.forEach(emote => {
     emote.draw();
     emote.update();
   });
 
-
+ 
 
   requestAnimationFrame(loop);
 };
@@ -44,12 +44,12 @@ class Emote {
     this.height = emoteScale;
     this.width = emoteScale * ratio;
 
-    this.a = Math.random();
-    this.b = Math.random();
-    this.offset = Math.random(Math.abs(this.b / this.a));
+    this.a = -Math.random() * 0.005 - 0.0002;
+    this.b = Math.random() * height * 0.4 + height * 0.6;
+    this.offset = Math.sqrt(Math.abs(this.b / this.a));
     this.x = -this.offset;
     this.speed =
-      30;
+      Math.random() * width * 0.002 + (2 * this.offset) / width + width * 0.01;
     this.shouldBeDeleted = false;
   }
 
@@ -62,8 +62,8 @@ class Emote {
   }
 
   draw() {
-    const x = Math.random();
-    const y = Math.random();
+    const x = this.x + this.offset;
+    const y = height - (this.a * Math.pow(this.x, 2) + this.b);
     ctx.drawImage(this.element, x, y, this.width, this.height);
   }
 }
