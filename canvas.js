@@ -37,19 +37,21 @@ const loop = () => {
 
 setup();
 
+/*Emote element variables and animation*/ 
 class Emote {
   constructor(element) {
     this.element = element;
     const ratio = element.width / element.height;
     this.height = emoteScale;
     this.width = emoteScale * ratio;
-
+    this.speed = 0;
+    
+    
     this.a = -Math.random() * 0.005 - 0.0002;
     this.b = Math.random() * height * 9 + height * 2;
     this.offset = Math.sqrt(Math.abs(this.b / this.a));
     this.x = -this.offset;
-    this.speed =
-      Math.random() * width * 0.002 + (2 * this.offset) / width + width * 0.01;
+
     this.shouldBeDeleted = false;
   }
 
