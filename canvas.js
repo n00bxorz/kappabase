@@ -25,12 +25,12 @@ const setup = () => {
 const loop = () => {
   ctx.clearRect(0, 0, width, height);
 
-  emotesToShow.forAll(emote => {
+  emotesToShow.forEach(emote => {
     emote.draw();
     emote.update();
   });
 
- 
+  emotesToShow = emotesToShow.filter(emote => !emote.shouldBeDeleted);
 
   requestAnimationFrame(loop);
 };
@@ -44,10 +44,10 @@ class Emote {
     this.height = emoteScale;
     this.width = emoteScale * ratio;
 
- 
-    this.offset = Math.PI();
-    this.x = stretchFactor * Math.sin(progress * 2 * Math.PI); // x = ƒ(t)
-    this.y = Math.cos(progress * 2 * Math.PI); // y = ƒ(t)
+    this.a = -Math.random() * 0.005 - 0.0002;
+    this.b = Math.random() * height * 0.4 + height * 0.6;
+    this.offset = Math.sqrt(Math.abs(this.b / this.a));
+    this.x = -this.offset;
     this.speed =
       Math.random() * width * 0.002 + (2 * this.offset) / width + width * 0.01;
     this.shouldBeDeleted = false;
@@ -63,7 +63,7 @@ class Emote {
 
   draw() {
     const x = this.x + this.offset;
-    const y = height ;
+    const y = height - (this.a * Math.pow(this.x, 2) + this.b);
     ctx.drawImage(this.element, x, y, this.width, this.height);
   }
 }
