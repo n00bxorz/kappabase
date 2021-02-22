@@ -1,6 +1,6 @@
-const width = 1920;
-const height = 1080;
-const emoteScale = height * 0.1;
+const width = 1920; /**Viewport width */
+const height = 1080; /**Veiwport Height */
+const emoteScale = height * 0.1; /*Scale of emote on screen */
 
 const canvas = document.querySelector("#canvas");
 canvas.width = width;
@@ -45,7 +45,7 @@ class Emote {
     this.width = emoteScale * ratio;
 
     this.a = -Math.random() * 0.005 - 0.0002;
-    this.b = Math.random() * height * 0.4 + height * 0.6;
+    this.b = Math.random() * height * 9 + height * 2;
     this.offset = Math.sqrt(Math.abs(this.b / this.a));
     this.x = -this.offset;
     this.speed =
