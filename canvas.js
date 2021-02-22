@@ -1,6 +1,6 @@
 const width = 1920;
 const height = 1080;
-const emoteScale = height * 10000;
+const emoteScale = height * 0.1;
 
 const canvas = document.querySelector("#canvas");
 canvas.width = width;
@@ -36,21 +36,6 @@ const loop = () => {
 };
 
 setup();
-
-class Emote {
-  constructor(element) {
-    this.element = element;
-    const ratio = element.width / element.height;
-    this.height = emoteScale;
-    this.width = emoteScale * ratio;
-
-    this.a = -Math.random() * 0.005 - 0.0002;
-    this.b = Math.random() * height * 0.4 + height * 0.6;
-    this.offset = 0;
-    this.x = -this.offset;
-    this.speed = 0;
-    this.shouldBeDeleted = false;
-  }
 
 class Emote {
   constructor(element) {
