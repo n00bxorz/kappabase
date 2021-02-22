@@ -44,10 +44,10 @@ class Emote {
     this.height = emoteScale;
     this.width = emoteScale * ratio;
 
-    this.a = -Math.random() * 0.5 - 0.02;
-    this.b = Math.random() * height * 0.4 + height * 0.6;
+ 
     this.offset = Math.PI();
-    this.x = -this.offset;
+    this.x = stretchFactor * Math.sin(progress * 2 * Math.PI); // x = ƒ(t)
+    this.y = Math.cos(progress * 2 * Math.PI); // y = ƒ(t)
     this.speed =
       Math.random() * width * 0.002 + (2 * this.offset) / width + width * 0.01;
     this.shouldBeDeleted = false;
@@ -63,7 +63,7 @@ class Emote {
 
   draw() {
     const x = this.x + this.offset;
-    const y = height - (this.a * Math.pow(this.x, 2) + this.b);
+    const y = height ;
     ctx.drawImage(this.element, x, y, this.width, this.height);
   }
 }
